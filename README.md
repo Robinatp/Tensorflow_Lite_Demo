@@ -9,22 +9,27 @@ In the demo app, inference is done using the TensorFlow Lite Java API. The demo 
 2,Download the source code for TensorFlow Lite and the demo and build it using bazel.I have just give  building commands !
 
 
-
 To build the demo app, run bazel:
 # TfLiteCameraDemo ---- The demo app classifier
 #./tensorflow direction run the bellow command
+
 bazel build --cxxopt=--std=c++11 //tensorflow/contrib/lite/java/demo/app/src/main:TfLiteCameraDemo
+
 for more infomation about [TfLiteCameraDemo](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/lite/java/demo)
 
 # tflite_demo ---- The demo app on classifier, detector, speech
 #./tensorflow direction run the bellow command
+
 sudo bazel build -c opt --config=android_arm{,64} --cxxopt='--std=c++11' "//tensorflow/contrib/lite/examples/android:tflite_demo"
+
 for more infomation about [tflite_demo](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/lite/examples/android/app)
 
 # bazel-bin/tensorflow/contrib/lite/java/libtensorflowlite.jar ---- the java api for tensorflow lite
+
 sudo bazel build -c opt --config=android_arm{,64} --cxxopt='--std=c++11' "//tensorflow/contrib/lite/java:tensorflowlite"
 
 # bazel-bin/tensorflow/examples/android/libtensorflow_demo.so ---- the native c++ jni  interface for libtensorflowlite.jar
+
 sudo bazel build -c opt --config=android_arm{,64} --cxxopt='--std=c++11' "//tensorflow/examples/android:libtensorflow_demo.so"
 
 
@@ -54,8 +59,10 @@ android_ndk_repository(
 
 2, Build this demo app with Bazel. The demo needs C++11. We configure the fat_apk_cpu flag to package support for 4 hardware variants. You may replace it with --config=android_arm64 on a 64-bit device and --config=android_arm for 32-bit device:
 For examples:
+
 bazel build -c opt --cxxopt='--std=c++11' --fat_apk_cpu=x86,x86_64,arm64-v8a,armeabi-v7a \
   //tensorflow/contrib/lite/examples/android:tflite_demo
+
 
 bazel build -c opt --config=android_arm{,64} --cxxopt='--std=c++11' "//tensorflow/contrib/lite/examples/android:tflite_demo"
 
